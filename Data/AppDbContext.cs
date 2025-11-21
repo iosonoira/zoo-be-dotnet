@@ -9,5 +9,6 @@ public class AppDbContext : DbContext
         : base(options)
     { }
 
-    public DbSet<Person> Persons { get; set; }
+    public DbSet<Animal> Animals { get; set; }
+    public DbSet<Species> Species { get; set; }
 }
