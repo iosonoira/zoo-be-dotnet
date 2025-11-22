@@ -12,8 +12,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Filename=./Data/people.db"));
 
 // Dependency Injection
-builder.Services.AddScoped<IPersonRepository, PersonRepository>();
-builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
+builder.Services.AddScoped<IAnimalService, AnimalService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
