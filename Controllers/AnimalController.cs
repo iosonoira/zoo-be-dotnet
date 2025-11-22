@@ -9,11 +9,11 @@ namespace WebApplication1.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class PersonController : Controller
+public class AnimalController : Controller
 {
-    private readonly IPersonService _service;
+    private readonly IAnimalService _service;
 
-    public PersonController(IPersonService service)
+    public AnimalController(IAnimalService service)
     {
         _service = service;
     }
@@ -25,23 +25,23 @@ public class PersonController : Controller
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id)
     {
-        var person = await _service.GetByIdAsync(id);
-        if (person == null) return NotFound();
-        return Ok(person);
+        var Animal = await _service.GetByIdAsync(id);
+        if (Animal == null) return NotFound();
+        return Ok(Animal);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Person p)
+    public async Task<IActionResult> Create(Animal a)
     {
-        var created = await _service.CreateAsync(p);
+        var created = await _service.CreateAsync(a);
         return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Person p)
+    public async Task<IActionResult> Update(int id, Animal a)
     {
-        if (id != p.Id) return BadRequest();
-        return Ok(await _service.UpdateAsync(p));
+        if (id != a.Id) return BadRequest();
+        return Ok(await _service.UpdateAsync(a));
     }
 
     [HttpDelete("{id}")]
